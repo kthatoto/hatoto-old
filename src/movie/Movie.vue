@@ -1,14 +1,13 @@
 <template>
   <div>
-    <router-link to="/">Go to root</router-link>
-    <h1>polling</h1>
-    <p>{{ time.toFixed(1) }}</p>
-    <div @click="stopTimer">stop</div>
-    <div @click="startTimer">start</div>
+    <div class="timer">{{ time.toFixed(1) }}</div>
+    <Display :time="time"/>
   </div>
 </template>
 <script>
+import Display from '@/movie/Display'
 export default {
+  components: { Display },
   data () {
     return {
       time: 0,
@@ -16,6 +15,7 @@ export default {
     }
   },
   created () {
+    document.addEventListener('keyup', this.keyup)
     this.startTimer()
   },
   beforeDestroy () {
@@ -28,11 +28,33 @@ export default {
     startTimer () {
       this.stopTimer()
       this.timerId = setInterval(() => {
-        this.time += 1
-      }, 1000)
+        this.time += 0.1
+      }, 100)
+    },
+    keyup (e) {
+      const key = e.key
+      switch (key) {
+        case 's':
+          this.startTimer()
+          break
+        case 'e':
+          this.stopTimer()
+          break
+        default:
+          break
+      }
     }
   }
 }
 </script>
 <style lang="scss">
+.timer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  padding: 10px 20px;
+}
 </style>
