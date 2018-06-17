@@ -1,31 +1,47 @@
 <template>
   <div>
-    <h1>This is Introduction component</h1>
+    <h1 v-if="time < 5" class="header1">kthatoto</h1>
   </div>
 </template>
 <script>
 import anime from 'animejs'
 export default {
   props: ['time'],
+  data () {
+    return {
+      headerAnime: {},
+      width: 0
+    }
+  },
+  created () {
+    this.width = document.body.clientWidth
+  },
   mounted () {
-    anime({
-      targets: 'h1',
+    this.headerAnime = anime({
+      targets: '.header1',
       translateX: [
-        { value: 500, duration: 5 * 1000 },
-        { value: 0, duration: 5 * 1000 }
+        { value: -this.width / 2, duration: 1 * 1000 },
+        { value: -this.width / 2, duration: 3 * 1000 },
+        { value: -this.width, duration: 1 * 1000 }
       ],
-      duration: 10 * 1000,
-      loop: true,
-      easing: 'linear'
+      duration: 5 * 1000,
+      easing: 'linear',
+      autoplay: false
     })
   },
   methods: {
+  },
+  watch: {
+    time (newTime, oldTime) {
+      this.headerAnime.seek(newTime * 1000)
+    }
   }
 }
 </script>
 <style lang="scss">
 h1 {
   position: absolute;
-  top: 300px;
+  top: 50%;
+  left: 100%;
 }
 </style>

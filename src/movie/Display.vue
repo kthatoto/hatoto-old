@@ -1,6 +1,6 @@
 <template>
   <div class="display">
-    <Introduction v-if="time <= 10"/>
+    <Introduction v-if="time <= 10" :time="time"/>
   </div>
 </template>
 <script>

@@ -28,8 +28,8 @@ export default {
     startTimer () {
       this.stopTimer()
       this.timerId = setInterval(() => {
-        this.time += 0.1
-      }, 100)
+        this.time += 0.01
+      }, 10)
     },
     keyup (e) {
       const key = e.key
