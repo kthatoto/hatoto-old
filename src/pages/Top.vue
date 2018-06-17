@@ -1,6 +1,6 @@
 <template>
   <div>
-    test
+    <router-link to="/movie">Go to movie</router-link>
   </div>
 </template>
 <script>
