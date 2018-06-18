@@ -11,6 +11,8 @@
 <script>
 import anime from '@/movie/utils/Anime'
 import { mapGetters } from 'vuex'
+import { nameAnimations as animes } from './animations'
+
 export default {
   props: ['time', 'offset', 'lifespan'],
   computed: mapGetters({
@@ -31,49 +33,13 @@ export default {
     }
   },
   mounted () {
-    const fadein = () => {
-      return {
-        targets: '.name',
-        translateX: { value: -this.width / 2 - 200, duration: 1 * 1000 }
-      }
-    }
-    const wave = (option) => {
-      return Object.assign({
-        targets: '.name__char',
-        easing: 'gravity',
-        translateY: -50,
-        delay: (_, i) => {
-          return i * 20
-        },
-        duration: 200
-      }, option)
-    }
-    const disappear = () => {
-      return {
-        offset: '-=350',
-        targets: '.name__char.-leave',
-        opacity: 0,
-        duration: 300,
-        delay: (_, i) => {
-          return i * 20
-        }
-      }
-    }
-    const rotateScale = () => {
-      return {
-        targets: '.name__char.-remain',
-        scale: 2,
-        rotate: 360,
-      }
-    }
-
     this.animation = anime.timeline({
       autoplay: false
-    }).add(fadein())
-      .add(wave())
-      .add(wave({ offset: '+=10000' }))
-      .add(disappear())
-      .add(rotateScale())
+    }).add(animes.fadein(this.width))
+      .add(animes.wave())
+      .add(animes.wave({ offset: '+=10000' }))
+      .add(animes.disappear())
+      .add(animes.rotateScale())
   },
   watch: {
     time (newTime, _) {
