@@ -26,10 +26,10 @@ export default {
     this.animation = anime.timeline({
       autoplay: false
     }).add({
-      targets: '.header1',
+      targets: '.name',
       translateX: { value: -this.width / 2 - 200, duration: 1 * 1000 }
     }).add({
-      targets: '.header1__char',
+      targets: '.name__char',
       easing: 'gravity',
       translateY: -50,
       delay: (_, i) => {
