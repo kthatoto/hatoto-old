@@ -17,6 +17,7 @@ export default {
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
 }
 a, a:visited {
   color: inherit;
