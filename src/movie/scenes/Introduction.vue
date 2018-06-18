@@ -5,24 +5,29 @@
 </template>
 <script>
 import anime from 'animejs'
+import { mapGetters } from 'vuex'
 export default {
   props: ['time'],
+  computed: mapGetters({
+    width: 'getDisplayWidth',
+    height: 'getDisplayHeight'
+  }),
   data () {
     return {
-      headerAnime: {},
-      width: 0
+      headerAnime: {}
     }
   },
   created () {
   },
   mounted () {
-    this.width = document.body.clientWidth
+    const width = this.width
+    console.log(this.width)
     this.headerAnime = anime({
       targets: '.header1',
       translateX: [
-        { value: -this.width / 2, duration: 1 * 1000 },
-        { value: -this.width / 2, duration: 3 * 1000 },
-        { value: -this.width, duration: 1 * 1000 }
+        { value: -width / 2, duration: 1 * 1000 },
+        { value: -width / 2, duration: 3 * 1000 },
+        { value: -width, duration: 1 * 1000 }
       ],
       duration: 5 * 1000,
       easing: 'linear',

@@ -7,6 +7,9 @@
 </template>
 <script>
 import Introduction from '@/movie/scenes/Introduction'
+import store from '@/vuex/store'
+import { SET_DISPLAY_SIZE } from '@/vuex/mutation_types'
+
 export default {
   components: { Introduction },
   props: ['time'],
@@ -17,8 +20,11 @@ export default {
     }
   },
   mounted () {
-    this.width = document.body.clientWidth
-    this.height = document.body.clientHeight
+    const displaySize = {
+      width: document.body.clientWidth,
+      height: document.body.clientHeight
+    }
+    store.dispatch(SET_DISPLAY_SIZE, displaySize)
   }
 }
 </script>
