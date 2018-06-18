@@ -31,6 +31,15 @@ export default {
         this.time += 0.01
       }, 10)
     },
+    resetTimer () {
+      this.time = 0
+    },
+    progressTime (value) {
+      this.time += value
+    },
+    backTime (value) {
+      this.time = Math.max(0, this.time - value)
+    },
     keyup (e) {
       const key = e.key
       switch (key) {
@@ -39,6 +48,15 @@ export default {
           break
         case 'e':
           this.stopTimer()
+          break
+        case 'r':
+          this.resetTimer()
+          break
+        case 'ArrowLeft':
+          this.backTime(5)
+          break
+        case 'ArrowRight':
+          this.progressTime(5)
           break
         default:
           break
