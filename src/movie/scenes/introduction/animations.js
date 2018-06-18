@@ -30,8 +30,17 @@ export const nameAnimations = {
   rotateScale () {
     return {
       targets: '.name__char.-remain',
-      scale: 2,
-      rotate: 360
+      fontSize: 60,
+      rotate: 360,
+      duratoin: 2000
     }
+  },
+  appearClone (option) {
+    return Object.assign({
+      targets: '.name__char.-cloned',
+      fontSize: 60,
+      rotate: 360,
+      duratoin: 2000
+    }, option)
   }
 }

@@ -5,6 +5,10 @@
         class="name__char"
         :class="{'-leave': !char.remain, '-remain': char.remain }"
         :key="i">{{ char.body }}</span>
+      <span v-for="char in 'to'.split('')"
+        v-show="cloneShowing"
+        :key="char"
+        class="name__char -cloned">{{ char }}</span>
     </div>
   </div>
 </template>
@@ -29,7 +33,8 @@ export default {
         { body: 's' }, { body: 'h' }, { body: 'i' }, { body: ' ' },
         { body: 'K' }, { body: 'a' }, { body: 'z' }, { body: 'u' },
         { body: 't', remain: true }, { body: 'o', remain: true }
-      ]
+      ],
+      cloneShowing: false
     }
   },
   mounted () {
@@ -40,6 +45,7 @@ export default {
       .add(animes.wave({ offset: '+=10000' }))
       .add(animes.disappear())
       .add(animes.rotateScale())
+      .add(animes.appearClone({ begin: () => { this.cloneShowing = true } }))
   },
   watch: {
     time (newTime, _) {
@@ -74,6 +80,9 @@ export default {
     display: block;
     float: left;
     min-width: 15px;
+    &.-cloned {
+      font-size: 0px;
+    }
   }
 }
 </style>
