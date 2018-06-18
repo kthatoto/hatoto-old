@@ -9,20 +9,33 @@
 import Introduction from '@/movie/scenes/Introduction'
 export default {
   components: { Introduction },
-  props: ['time']
+  props: ['time'],
+  data () {
+    return {
+      width: null,
+      height: null
+    }
+  },
+  mounted () {
+    this.width = document.body.clientWidth
+    this.height = document.body.clientHeight
+  }
 }
 </script>
 <style lang="scss">
+$borderWeight: 10px;
 .display {
   width: 100vw;
   height: 100vh;
   min-width: 1000px;
   min-height: 600px;
-  border: 10px solid black;
+  border: $borderWeight solid tan;
+  position: relative;
 }
 .verticalLine {
   position: absolute;
-  height: 100%;
+  height: calc(100vh - 2 * #{$borderWeight});
+  min-height: calc(600px - 2 * #{$borderWeight});
   width: 0;
   left: 50%;
   border-left: 1px solid black;
@@ -30,7 +43,8 @@ export default {
 .holizotalLine {
   position: absolute;
   height: 0;
-  width: 100%;
+  width: calc(100vw - 2 * #{$borderWeight});
+  min-width: calc(1000px - 2 * #{$borderWeight});
   top: 50%;
   border-top: 1px solid black;
 }

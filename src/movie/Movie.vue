@@ -53,8 +53,9 @@ export default {
   top: 0;
   right: 0;
   background-color: black;
-  opacity: 0.8;
+  opacity: 0.5;
   color: white;
   padding: 10px 20px;
+  z-index: 1;
 }
 </style>

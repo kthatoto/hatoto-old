@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 v-if="time < 5" class="header1">kthatoto</h1>
+    <h1 class="header1">Kazuto Takahashi</h1>
   </div>
 </template>
 <script>
@@ -14,9 +14,9 @@ export default {
     }
   },
   created () {
-    this.width = document.body.clientWidth
   },
   mounted () {
+    this.width = document.body.clientWidth
     this.headerAnime = anime({
       targets: '.header1',
       translateX: [
@@ -39,9 +39,10 @@ export default {
 }
 </script>
 <style lang="scss">
-h1 {
+.header1 {
   position: absolute;
   top: 50%;
   left: 100%;
+  word-break: nowrap;
 }
 </style>
