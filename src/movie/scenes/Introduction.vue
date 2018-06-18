@@ -6,8 +6,9 @@
 <script>
 import anime from 'animejs'
 import { mapGetters } from 'vuex'
+
 export default {
-  props: ['time'],
+  props: ['time', 'offset', 'lifespan'],
   computed: mapGetters({
     width: 'getDisplayWidth',
     height: 'getDisplayHeight'
@@ -17,28 +18,21 @@ export default {
       headerAnime: {}
     }
   },
-  created () {
-  },
   mounted () {
-    const width = this.width
-    console.log(this.width)
-    this.headerAnime = anime({
+    this.headerAnime = anime.timeline({
       targets: '.header1',
-      translateX: [
-        { value: -width / 2, duration: 1 * 1000 },
-        { value: -width / 2, duration: 3 * 1000 },
-        { value: -width, duration: 1 * 1000 }
-      ],
-      duration: 5 * 1000,
-      easing: 'linear',
       autoplay: false
+    }).add({
+      translateX: { value: -this.width / 2, duration: 1 * 1000 }
+    }).add({
+      translateX: { value: -this.width, delay: 2 * 1000, duration: 4 * 1000 }
     })
-  },
-  methods: {
   },
   watch: {
     time (newTime, oldTime) {
-      this.headerAnime.seek(newTime * 1000)
+      if (newTime <= this.offset + this.lifespan) {
+        this.headerAnime.seek(newTime * 1000 - this.offset * 1000)
+      }
     }
   }
 }
@@ -48,6 +42,5 @@ export default {
   position: absolute;
   top: 50%;
   left: 100%;
-  word-break: nowrap;
 }
 </style>

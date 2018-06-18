@@ -2,7 +2,7 @@
   <div class="display">
     <div class="verticalLine"></div>
     <div class="holizotalLine"></div>
-    <Introduction v-if="time <= 10" :time="time"/>
+    <Introduction v-if="1 < time" :time="time" :offset="1" :lifespan="10"/>
   </div>
 </template>
 <script>
