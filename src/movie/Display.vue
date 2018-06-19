@@ -1,8 +1,9 @@
 <template>
   <div class="display">
-    <!-- <div class="verticalLine"></div> -->
-    <!-- <div class="holizotalLine"></div> -->
     <Introduction v-if="1 < time" :time="time" :offset="1"/>
+    <div class="content">
+      <About v-if="page === 'about'"/>
+    </div>
   </div>
 </template>
 <script>
@@ -10,13 +11,16 @@ import Introduction from '@/movie/scenes/introduction/Introduction'
 import store from '@/vuex/store'
 import { SET_DISPLAY_SIZE } from '@/vuex/mutation_types'
 
+import About from '@/movie/pages/About'
+
 export default {
-  components: { Introduction },
+  components: { Introduction, About },
   props: ['time'],
   data () {
     return {
       width: null,
-      height: null
+      height: null,
+      page: ''
     }
   },
   mounted () {
@@ -52,5 +56,14 @@ $borderWeight: 0px;
   min-width: calc(1000px - 2 * #{$borderWeight});
   top: 50%;
   border-top: 1px solid black;
+}
+.content {
+  border: 1px solid red;
+  position: relative;
+  top: 150px;
+  left: 300px;
+  width: calc(100% - 300px - 50px);
+  height: calc(100% - 150px - 50px);
+
 }
 </style>

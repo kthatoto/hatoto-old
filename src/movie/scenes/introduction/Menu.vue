@@ -3,7 +3,8 @@
     <ul class="menu__list">
       <li v-for="item in items"
         class="menu__item"
-        :key="item.label">
+        :key="item.label"
+        @click="link(item.label)">
         <div class="menu__label">
           <span>{{ item.label }}</span>
         </div>
@@ -48,6 +49,11 @@ export default {
   watch: {
     time (newTime, _) {
       this.animation.seek(newTime * 1000 - this.offset * 1000)
+    }
+  },
+  methods: {
+    link (label) {
+      this.$parent.$parent.page = label.toLowerCase()
     }
   }
 }
