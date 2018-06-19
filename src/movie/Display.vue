@@ -3,6 +3,9 @@
     <Introduction v-if="1 < time" :time="time" :offset="1"/>
     <div class="content">
       <About v-if="page === 'about'"/>
+      <Works v-if="page === 'works'"/>
+      <Skills v-if="page === 'skills'"/>
+      <Contact v-if="page === 'contact'"/>
     </div>
   </div>
 </template>
@@ -12,9 +15,12 @@ import store from '@/vuex/store'
 import { SET_DISPLAY_SIZE } from '@/vuex/mutation_types'
 
 import About from '@/movie/pages/About'
+import Works from '@/movie/pages/Works'
+import Skills from '@/movie/pages/Skills'
+import Contact from '@/movie/pages/Contact'
 
 export default {
-  components: { Introduction, About },
+  components: { Introduction, About, Works, Skills, Contact },
   props: ['time'],
   data () {
     return {
