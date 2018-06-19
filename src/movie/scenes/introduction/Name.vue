@@ -5,7 +5,7 @@
         class="name__char"
         :class="{'-leave': !char.remain, '-remain': char.remain }"
         :key="i">{{ char.body }}</span>
-      <span v-for="char in 'to'.split('')"
+      <span v-for="char in '.to'.split('')"
         v-show="cloneShowing"
         :key="char"
         class="name__char -cloned">{{ char }}</span>
@@ -18,7 +18,7 @@ import { mapGetters } from 'vuex'
 import { nameAnimations as animes } from './animations'
 
 export default {
-  props: ['time', 'offset', 'lifespan'],
+  props: ['time', 'offset'],
   computed: mapGetters({
     width: 'getDisplayWidth',
     height: 'getDisplayHeight'
@@ -46,16 +46,15 @@ export default {
       .add(animes.disappear())
       .add(animes.rotateScale())
       .add(animes.appearClone({ begin: () => { this.cloneShowing = true } }))
+      .add({ complete: () => { this.alive = false } })
   },
   watch: {
     time (newTime, _) {
-      this.animation.seek(newTime * 1000 - this.offset * 1000)
-      // if (this.alive && newTime <= this.offset + this.lifespan) {
-      //   this.animation.seek(newTime * 1000 - this.offset * 1000)
-      // } else {
-      //   this.alive = false
-      //   this.animation = null
-      // }
+      if (this.alive) {
+        this.animation.seek(newTime * 1000 - this.offset * 1000)
+      } else {
+        this.animation = null
+      }
     }
   }
 }

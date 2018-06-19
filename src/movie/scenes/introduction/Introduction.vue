@@ -1,6 +1,6 @@
 <template>
   <div class="introduction">
-    <Name :time="time" :offset="offset" :lifespan="lifespan" />
+    <Name :time="time" :offset="offset" />
   </div>
 </template>
 <script>

@@ -32,7 +32,7 @@ export const nameAnimations = {
       targets: '.name__char.-remain',
       fontSize: 60,
       rotate: 360,
-      duratoin: 2000
+      duratoin: 1000
     }
   },
   appearClone (option) {
@@ -40,7 +40,7 @@ export const nameAnimations = {
       targets: '.name__char.-cloned',
       fontSize: 60,
       rotate: 360,
-      duratoin: 2000
+      duratoin: 1000
     }, option)
   }
 }
