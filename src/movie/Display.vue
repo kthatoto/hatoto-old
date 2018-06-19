@@ -29,13 +29,12 @@ export default {
 }
 </script>
 <style lang="scss">
-$borderWeight: 10px;
+$borderWeight: 0px;
 .display {
   width: 100vw;
   height: 100vh;
   min-width: 1000px;
   min-height: 600px;
-  border: $borderWeight solid tan;
   position: relative;
 }
 .verticalLine {
