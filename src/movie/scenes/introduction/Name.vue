@@ -1,14 +1,19 @@
 <template>
-  <div class="name">
-    <div class="name__chars">
-      <span v-for="dummy in [100, 101, 102]" :key="dummy" class="name__char -dummy"></span>
-      <span v-for="(char, i) in chars"
-        class="name__char"
-        :class="{'-leave': !char.remain, '-remain': char.remain }"
-        :key="i">{{ char.body }}</span>
-      <span v-for="char in ['.', 't', 'o']"
-        :key="char"
-        class="name__char -cloned">{{ char }}</span>
+  <div>
+    <div class="name" v-show="alive">
+      <div class="name__chars">
+        <span v-for="dummy in [100, 101, 102]" :key="dummy" class="name__char -dummy"></span>
+        <span v-for="(char, i) in chars"
+          class="name__char"
+          :class="{'-leave': !char.remain, '-remain': char.remain }"
+          :key="i">{{ char.body }}</span>
+        <span v-for="char in ['.', 't', 'o']"
+          :key="char"
+          class="name__char -cloned">{{ char }}</span>
+      </div>
+    </div>
+    <div v-show="!alive">
+      <h1 class="name__complete">hato.to</h1>
     </div>
   </div>
 </template>
@@ -26,6 +31,7 @@ export default {
   data () {
     return {
       animation: {},
+      duration: 0,
       alive: true,
       chars: [
         { body: 'T' }, { body: 'a' }, { body: 'k' }, { body: 'a' },
@@ -48,13 +54,17 @@ export default {
       .add(animes.appearClone())
       .add(animes.moveLogoPosition(this.width, this.height, 50, 50))
       .add(animes.changeWidth())
+    this.duration = this.animation.duration
   },
   watch: {
     time (newTime, _) {
+      if (this.offset <= this.time && this.time <= this.offset + (this.duration / 1000)) {
+        this.alive = true
+      } else {
+        this.alive = false
+      }
       if (this.alive) {
         this.animation.seek(newTime * 1000 - this.offset * 1000)
-      } else {
-        this.animation = null
       }
     }
   }
@@ -87,6 +97,12 @@ export default {
     &.-dummy {
       font-size: 0;
     }
+  }
+  &__complete {
+    font-size: 60px;
+    position: absolute;
+    top: 35px;
+    left: 50px;
   }
 }
 </style>
