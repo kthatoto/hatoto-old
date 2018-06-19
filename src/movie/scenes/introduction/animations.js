@@ -58,15 +58,16 @@ export const nameAnimations = {
       targets: '.name',
       translateX: -width + posX,
       translateY: -(height / 2 - posY - 25),
-      duration: 1500
+      duration: 1000,
+      offset: '-=500'
     }
   },
   changeWidth () {
     return {
       targets: '.name__chars',
       width: 200,
-      offset: '-=1500'
+      offset: '-=1000',
+      duration: 1000
     }
   }
-
 }
