@@ -1,7 +1,7 @@
 <template>
   <div class="introduction">
     <Name :time="time" :offset="offset" />
-
+    <Menu :time="time" :offset="offset + 6"/>
   </div>
 </template>
 <script>

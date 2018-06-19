@@ -71,3 +71,12 @@ export const nameAnimations = {
     }
   }
 }
+export const menuAnimations = {
+  slidedown () {
+    return {
+      targets: '.menu__list',
+      maxHeight: 300,
+      duration: 1000
+    }
+  }
+}
