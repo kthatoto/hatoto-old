@@ -1,12 +1,12 @@
 <template>
   <div class="name">
     <div class="name__chars">
+      <span v-for="dummy in [100, 101, 102]" :key="dummy" class="name__char -dummy"></span>
       <span v-for="(char, i) in chars"
         class="name__char"
         :class="{'-leave': !char.remain, '-remain': char.remain }"
         :key="i">{{ char.body }}</span>
-      <span v-for="char in '.to'.split('')"
-        v-show="cloneShowing"
+      <span v-for="char in ['.', 't', 'o']"
         :key="char"
         class="name__char -cloned">{{ char }}</span>
     </div>
@@ -33,8 +33,7 @@ export default {
         { body: 's' }, { body: 'h' }, { body: 'i' }, { body: ' ' },
         { body: 'K' }, { body: 'a' }, { body: 'z' }, { body: 'u' },
         { body: 't', remain: true }, { body: 'o', remain: true }
-      ],
-      cloneShowing: false
+      ]
     }
   },
   mounted () {
@@ -42,11 +41,13 @@ export default {
       autoplay: false
     }).add(animes.fadein(this.width))
       .add(animes.wave())
-      .add(animes.wave({ offset: '+=10000' }))
+      .add(animes.wave())
       .add(animes.disappear())
       .add(animes.rotateScale())
-      .add(animes.appearClone({ begin: () => { this.cloneShowing = true } }))
-      .add({ complete: () => { this.alive = false } })
+      .add(animes.deleteDisappeared())
+      .add(animes.appearClone())
+      .add(animes.moveLogoPosition(this.width, this.height, 50, 50))
+      .add(animes.changeWidth())
   },
   watch: {
     time (newTime, _) {
@@ -70,7 +71,7 @@ export default {
   left: 100%;
   white-space: nowrap;
   &__chars {
-    width: 400px;
+    width: 500px;
     position: relative;
     display: inline-flex;
     justify-content: center;
@@ -79,8 +80,12 @@ export default {
     display: block;
     float: left;
     min-width: 15px;
+    max-width: 50px;
     &.-cloned {
-      font-size: 0px;
+      font-size: 0;
+    }
+    &.-dummy {
+      font-size: 0;
     }
   }
 }

@@ -11,7 +11,8 @@ export default {
   data () {
     return {
       time: 0,
-      timerId: 0
+      timerId: 0,
+      smallMode: false
     }
   },
   created () {
@@ -52,11 +53,22 @@ export default {
         case 'r':
           this.resetTimer()
           break
+        case 'm':
+          this.smallMode = !this.smallMode
+          break
         case 'ArrowLeft':
-          this.backTime(5)
+          if (this.smallMode) {
+            this.backTime(0.1)
+          } else {
+            this.backTime(5)
+          }
           break
         case 'ArrowRight':
-          this.progressTime(5)
+          if (this.smallMode) {
+            this.progressTime(0.1)
+          } else {
+            this.progressTime(5)
+          }
           break
         default:
           break
