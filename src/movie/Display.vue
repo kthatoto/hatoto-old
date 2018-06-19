@@ -1,8 +1,8 @@
 <template>
   <div class="display">
-    <div class="verticalLine"></div>
-    <div class="holizotalLine"></div>
-    <Introduction v-if="1 < time" :time="time" :offset="1" :lifespan="10"/>
+    <!-- <div class="verticalLine"></div> -->
+    <!-- <div class="holizotalLine"></div> -->
+    <Introduction v-if="1 < time" :time="time" :offset="1"/>
   </div>
 </template>
 <script>
