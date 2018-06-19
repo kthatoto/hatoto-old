@@ -33,7 +33,7 @@ export default {
       // duration: 0,
       items: [
         { label: 'About' },
-        { label: 'Wokrs' },
+        { label: 'Works' },
         { label: 'Skills' },
         { label: 'Contact' }
       ]
@@ -44,6 +44,7 @@ export default {
       autoplay: false
     }).add(animes.slidedown())
       .add(animes.border())
+      .add({ complete: () => { this.$parent.$parent.$parent.stopTimer() } })
     // this.duration = this.animation.duration
   },
   watch: {
