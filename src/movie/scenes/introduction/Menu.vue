@@ -1,10 +1,17 @@
 <template>
   <div class="menu">
     <ul class="menu__list">
-      <li class="menu__item">About</li>
-      <li class="menu__item">Works</li>
-      <li class="menu__item">Skills</li>
-      <li class="menu__item">Contact</li>
+      <li v-for="item in items"
+        class="menu__item"
+        :key="item.label">
+        <div class="menu__label">
+          <span>{{ item.label }}</span>
+        </div>
+        <div class="menu__label -hover">
+          <span>{{ item.label }}</span>
+        </div>
+        <div class="menu__border"></div>
+      </li>
     </ul>
   </div>
 </template>
@@ -22,26 +29,25 @@ export default {
   data () {
     return {
       animation: {},
-      duration: 0,
-      alive: true
+      // duration: 0,
+      items: [
+        { label: 'About' },
+        { label: 'Wokrs' },
+        { label: 'Skills' },
+        { label: 'Contact' }
+      ]
     }
   },
   mounted () {
     this.animation = anime.timeline({
       autoplay: false
     }).add(animes.slidedown())
-    this.duration = this.animation.duration
+      .add(animes.border())
+    // this.duration = this.animation.duration
   },
   watch: {
     time (newTime, _) {
-      if (this.offset <= this.time && this.time <= this.offset + (this.duration / 1000)) {
-        this.alive = true
-      } else {
-        this.alive = false
-      }
-      if (this.alive) {
-        this.animation.seek(newTime * 1000 - this.offset * 1000)
-      }
+      this.animation.seek(newTime * 1000 - this.offset * 1000)
     }
   }
 }
@@ -54,6 +60,39 @@ export default {
   &__list {
     max-height: 0;
     overflow: hidden;
+  }
+  &__item {
+    margin: 10px 0 20px;
+    cursor: pointer;
+    position: relative;
+    &:hover {
+      .-hover {
+        height: 30px;
+      }
+    }
+  }
+  &__label {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    padding: 0 5px;
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    &.-hover {
+      background-color: black;
+      color: white;
+      overflow: hidden;
+      height: 0;
+      transition: all 0.3s ease;
+    }
+  }
+  &__border {
+    border-bottom: 1px solid black;
+    width: 0;
+    height: 0;
+    padding-top: 30px;
   }
 }
 </style>

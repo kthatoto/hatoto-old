@@ -76,7 +76,20 @@ export const menuAnimations = {
     return {
       targets: '.menu__list',
       maxHeight: 300,
-      duration: 1000
+      duration: 1000,
+      easing: 'linear'
+    }
+  },
+  border () {
+    return {
+      targets: '.menu__border',
+      width: 70,
+      delay: (_, i) => {
+        return i * 100
+      },
+      easing: 'linear',
+      duration: 300,
+      offset: '-=800'
     }
   }
 }
