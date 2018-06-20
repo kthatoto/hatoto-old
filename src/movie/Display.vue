@@ -64,7 +64,6 @@ $borderWeight: 0px;
   border-top: 1px solid black;
 }
 .content {
-  border: 1px solid red;
   position: relative;
   top: 150px;
   left: 300px;
