@@ -12,11 +12,6 @@ export default new Router({
     {
       path: '/',
       name: 'Top',
-      component: Top
-    },
-    {
-      path: '/movie',
-      name: 'Movie',
       component: Movie
     }
   ]
