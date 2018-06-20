@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Top from '@/pages/Top'
 import Movie from '@/movie/Movie'
 
 Vue.use(Router)
