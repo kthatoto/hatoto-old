@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="timer">{{ time.toFixed(1) }}</div>
+    <!-- <div class="timer">{{ time.toFixed(1) }}</div> -->
     <Display :time="time"/>
   </div>
 </template>
