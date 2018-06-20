@@ -100,6 +100,15 @@ export default {
   &__description {
     font-size: 0.8rem;
   }
+  &__skills {
+    &Header {
+      display: inline-block;
+      border: 1px solid black;
+      padding: 5px 10px;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+  }
   &__table {
     th {
       width: 130px;
