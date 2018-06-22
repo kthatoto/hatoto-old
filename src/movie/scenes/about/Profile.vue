@@ -20,7 +20,7 @@ export default {
   data () {
     return {
       profile: [
-        { header: 'Name', data: '高橋 一斗' },
+        { header: 'Name', data: '高橋 一斗 (Takahashi Kazuto)' },
         { header: 'Birth', data: '1996/02/20' },
         { header: 'Location', data: '神奈川, 東京' },
         { header: 'University / Grade', data: '明治大学 / 学部3年' },
