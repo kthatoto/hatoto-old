@@ -101,8 +101,9 @@ export default {
   &__complete {
     font-size: 60px;
     position: absolute;
-    top: 35px;
+    top: 50px;
     left: 50px;
+    line-height: 50px;
   }
 }
 </style>
