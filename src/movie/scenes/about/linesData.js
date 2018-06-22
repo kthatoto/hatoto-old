@@ -28,7 +28,7 @@ export default [
     title: '休学',
     style: {
       left: '46%',
-      right: '18%',
+      right: '12%',
       backgroundColor: '#9dcce0',
       color: '#333',
       top: '65px',
