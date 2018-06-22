@@ -1,7 +1,8 @@
 <template>
   <div class="display">
     <Introduction v-if="1 < time" :time="time" :offset="1"/>
-    <About v-if="6 < time" :time="time" :offset="6"/>
+    <About v-if="6 < time && false" :time="time" :offset="6"/>
+    <Works v-if="6 < time" :time="time" :offset="6"/>
   </div>
 </template>
 <script>
@@ -9,9 +10,10 @@ import store from '@/vuex/store'
 import { SET_DISPLAY_SIZE } from '@/vuex/mutation_types'
 import Introduction from '@/movie/scenes/introduction/Introduction'
 import About from '@/movie/scenes/about/About'
+import Works from '@/movie/scenes/works/works'
 
 export default {
-  components: { Introduction, About },
+  components: { Introduction, About, Works },
   props: ['time'],
   data () {
     return {
