@@ -21,7 +21,7 @@ export default {
   width: calc(100% - 300px - 50px);
   height: calc(100% - 150px - 50px);
   &__profile {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
 }
 </style>

@@ -13,6 +13,9 @@
       </table>
       <img :src="require(`@/assets/${image}`)" class="profile__image">
     </div>
+    <div class="profile__updated">
+      <p>Updated on {{ lastUpdated }}</p>
+    </div>
   </div>
 </template>
 <script>
@@ -26,12 +29,14 @@ export default {
         { header: 'University / Grade', data: '明治大学 / 学部3年' },
         { header: 'Faculty / Department', data: '総合数理学部 / 現象数理学科' }
       ],
-      image: 'profile.jpeg'
+      image: 'profile.jpeg',
+      lastUpdated: '2018/06/23'
     }
   }
 }
 </script>
 <style lang="scss" scoped>
+$imageWidth: 200px;
 .profile {
   &__content {
     position: relative;
@@ -51,11 +56,17 @@ export default {
     }
   }
   &__image {
-    width: 200px;
+    width: $imageWidth;
     position: absolute;
     top: 10px;
     right: 0;
     box-shadow: 0px 0px 5px 1px #999;
+  }
+  &__updated {
+    margin-top: 25px;
+    padding-right: calc( #{$imageWidth} + 20px );
+    text-align: right;
+    font-size: 0.8rem;
   }
 }
 </style>
