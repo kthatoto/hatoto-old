@@ -10,13 +10,6 @@ import Menu from '@/movie/scenes/introduction/Menu'
 
 export default {
   components: { Name, Menu },
-  props: ['time', 'offset'],
-  data () {
-    return {}
-  }
+  props: ['time', 'offset']
 }
 </script>
-<style lang="scss" scoped>
-.introduction {
-}
-</style>

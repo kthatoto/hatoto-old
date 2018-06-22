@@ -1,26 +1,17 @@
 <template>
   <div class="display">
-    <Introduction v-if="1 < time" :time="time" :offset="1"/>
-    <div class="content">
-      <About v-if="page === 'about'"/>
-      <Works v-if="page === 'works'"/>
-      <Skills v-if="page === 'skills'"/>
-      <Contact v-if="page === 'contact'"/>
-    </div>
+    <Introduction v-show="1 < time" :time="time" :offset="1"/>
+    <About v-show="6 < time" :time="time" :offset="6"/>
   </div>
 </template>
 <script>
-import Introduction from '@/movie/scenes/introduction/Introduction'
 import store from '@/vuex/store'
 import { SET_DISPLAY_SIZE } from '@/vuex/mutation_types'
-
-import About from '@/movie/pages/About'
-import Works from '@/movie/pages/Works'
-import Skills from '@/movie/pages/Skills'
-import Contact from '@/movie/pages/Contact'
+import Introduction from '@/movie/scenes/introduction/Introduction'
+import About from '@/movie/scenes/about/About'
 
 export default {
-  components: { Introduction, About, Works, Skills, Contact },
+  components: { Introduction, About },
   props: ['time'],
   data () {
     return {
@@ -62,13 +53,5 @@ $borderWeight: 0px;
   min-width: calc(1000px - 2 * #{$borderWeight});
   top: 50%;
   border-top: 1px solid black;
-}
-.content {
-  position: relative;
-  top: 150px;
-  left: 300px;
-  width: calc(100% - 300px - 50px);
-  height: calc(100% - 150px - 50px);
-
 }
 </style>
