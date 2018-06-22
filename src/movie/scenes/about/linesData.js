@@ -33,7 +33,7 @@ export default [
       color: '#333',
       top: '65px',
       fontWeight: 'bold',
-      borderRadius: '5px',
+      borderRadius: '5px'
     }
   },
   {
