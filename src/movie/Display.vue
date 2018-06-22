@@ -1,7 +1,7 @@
 <template>
   <div class="display">
-    <Introduction v-show="1 < time" :time="time" :offset="1"/>
-    <About v-show="6 < time" :time="time" :offset="6"/>
+    <Introduction v-if="1 < time" :time="time" :offset="1"/>
+    <About v-if="6 < time" :time="time" :offset="6"/>
   </div>
 </template>
 <script>
