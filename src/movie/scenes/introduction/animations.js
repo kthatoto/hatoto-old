@@ -85,11 +85,11 @@ export const menuAnimations = {
       targets: '.menu__border',
       width: 70,
       delay: (_, i) => {
-        return i * 100
+        return i * 150
       },
       easing: 'linear',
-      duration: 300,
-      offset: '-=800'
+      duration: 500,
+      offset: '-=700'
     }
   }
 }

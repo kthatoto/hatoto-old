@@ -82,6 +82,7 @@ export default {
   &__list {
     max-height: 0;
     overflow: hidden;
+    width: 70px;
     &.-finished {
       max-height: 300px;
     }
