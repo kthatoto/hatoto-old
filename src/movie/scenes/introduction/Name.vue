@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="name" v-show="alive">
+    <div class="name" v-show="status === 'animating'">
       <div class="name__chars">
         <span v-for="dummy in [100, 101, 102]" :key="dummy" class="name__char -dummy"></span>
         <span v-for="(char, i) in chars"
@@ -12,7 +12,7 @@
           class="name__char -cloned">{{ char }}</span>
       </div>
     </div>
-    <div v-show="!alive">
+    <div v-show="status === 'finished'">
       <h1 class="name__complete">hato.to</h1>
     </div>
   </div>
@@ -32,14 +32,14 @@ export default {
     return {
       animation: {},
       duration: 0,
-      alive: true,
       chars: [
         { body: 'T' }, { body: 'a' }, { body: 'k' }, { body: 'a' },
         { body: 'h', remain: true }, { body: 'a', remain: true },
         { body: 's' }, { body: 'h' }, { body: 'i' }, { body: ' ' },
         { body: 'K' }, { body: 'a' }, { body: 'z' }, { body: 'u' },
         { body: 't', remain: true }, { body: 'o', remain: true }
-      ]
+      ],
+      status: 'beforeStart'
     }
   },
   mounted () {
@@ -58,12 +58,12 @@ export default {
   },
   watch: {
     time (newTime, _) {
-      if (this.offset <= this.time && this.time <= this.offset + (this.duration / 1000)) {
-        this.alive = true
+      if (this.time < this.offset) {
+        this.status = 'beforeStart'
+      } else if (this.time > this.offset + (this.duration / 1000)) {
+        this.status = 'finished'
       } else {
-        this.alive = false
-      }
-      if (this.alive) {
+        this.status = 'animating'
         this.animation.seek(newTime * 1000 - this.offset * 1000)
       }
     }

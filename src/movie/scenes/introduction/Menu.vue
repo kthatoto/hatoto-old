@@ -1,6 +1,6 @@
 <template>
   <div class="menu">
-    <ul class="menu__list">
+    <ul class="menu__list" v-show="status === 'animating'">
       <li v-for="item in items"
         class="menu__item"
         :key="item.label"
@@ -12,6 +12,21 @@
           <span>{{ item.label }}</span>
         </div>
         <div class="menu__border"></div>
+      </li>
+    </ul>
+
+    <ul class="menu__list -finished" v-show="status === 'finished'">
+      <li v-for="item in items"
+        class="menu__item -finished"
+        :key="item.label"
+        @click="link(item.label)">
+        <div class="menu__label -finished">
+          <span>{{ item.label }}</span>
+        </div>
+        <div class="menu__label -hover -finished">
+          <span>{{ item.label }}</span>
+        </div>
+        <div class="menu__border -finished"></div>
       </li>
     </ul>
   </div>
@@ -30,13 +45,14 @@ export default {
   data () {
     return {
       animation: {},
-      // duration: 0,
+      duration: 0,
       items: [
         { label: 'About' },
         { label: 'Works' },
         { label: 'Skills' },
         { label: 'Contact' }
-      ]
+      ],
+      status: 'beforeStart'
     }
   },
   mounted () {
@@ -44,12 +60,18 @@ export default {
       autoplay: false
     }).add(animes.slidedown())
       .add(animes.border())
-      .add({ complete: () => { this.$parent.$parent.$parent.stopTimer() } })
-    // this.duration = this.animation.duration
+    this.duration = this.animation.duration
   },
   watch: {
     time (newTime, _) {
-      this.animation.seek(newTime * 1000 - this.offset * 1000)
+      if (this.time < this.offset) {
+        this.status = 'beforeStart'
+      } else if (this.time > this.offset + (this.duration / 1000)) {
+        this.status = 'finished'
+      } else {
+        this.status = 'animating'
+        this.animation.seek(newTime * 1000 - this.offset * 1000)
+      }
     }
   },
   methods: {
@@ -67,6 +89,9 @@ export default {
   &__list {
     max-height: 0;
     overflow: hidden;
+    &.-finished {
+      max-height: 300px;
+    }
   }
   &__item {
     margin: 10px 0 20px;
@@ -100,6 +125,9 @@ export default {
     width: 0;
     height: 0;
     padding-top: 30px;
+    &.-finished {
+      width: 70px;
+    }
   }
 }
 </style>
