@@ -3,8 +3,7 @@
     <ul class="menu__list" v-show="status === 'animating'">
       <li v-for="item in items"
         class="menu__item"
-        :key="item.label"
-        @click="link(item.label)">
+        :key="item.label">
         <div class="menu__label">
           <span>{{ item.label }}</span>
         </div>
@@ -18,8 +17,7 @@
     <ul class="menu__list -finished" v-show="status === 'finished'">
       <li v-for="item in items"
         class="menu__item -finished"
-        :key="item.label"
-        @click="link(item.label)">
+        :key="item.label">
         <div class="menu__label -finished">
           <span>{{ item.label }}</span>
         </div>
@@ -72,11 +70,6 @@ export default {
         this.status = 'animating'
         this.animation.seek(newTime * 1000 - this.offset * 1000)
       }
-    }
-  },
-  methods: {
-    link (label) {
-      this.$parent.$parent.page = label.toLowerCase()
     }
   }
 }
