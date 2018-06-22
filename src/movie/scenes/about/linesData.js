@@ -7,7 +7,8 @@ export default [
       right: '0',
       backgroundColor: '#33358a',
       color: 'white',
-      top: '5px'
+      top: '5px',
+      borderRadius: '5px 0 0 5px'
     }
   },
   {
@@ -16,9 +17,10 @@ export default [
     style: {
       left: '22%',
       right: '0',
-      backgroundColor: '#f8cc46',
-      color: '#333',
-      top: '35px'
+      backgroundColor: '#e15627',
+      color: 'white',
+      top: '35px',
+      borderRadius: '5px 0 0 5px'
     }
   },
   {
@@ -30,7 +32,8 @@ export default [
       backgroundColor: '#9dcce0',
       color: '#333',
       top: '65px',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      borderRadius: '5px',
     }
   },
   {
@@ -41,7 +44,8 @@ export default [
       right: '0',
       backgroundColor: '#61967d',
       color: 'white',
-      top: '95px'
+      top: '95px',
+      borderRadius: '5px 0 0 5px'
     }
   },
   {
@@ -50,9 +54,10 @@ export default [
     style: {
       left: '68%',
       right: '0',
-      backgroundColor: '#b2302f',
+      backgroundColor: '#3284c8',
       color: 'white',
-      top: '125px'
+      top: '125px',
+      borderRadius: '5px 0 0 5px'
     }
   }
 ]

@@ -75,7 +75,8 @@ export default {
     height: 25px;
     line-height: 25px;
     vertical-align: middle;
-    padding: 0 5px;
+    padding: 0 10px;
+    font-size: 0.8rem;
   }
 }
 </style>
