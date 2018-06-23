@@ -1,8 +1,8 @@
 <template>
   <div class="display">
     <Introduction v-if="1 < time" :time="time" :offset="1"/>
-    <About v-if="6 < time && false" :time="time" :offset="6"/>
-    <Works v-if="6 < time" :time="time" :offset="6"/>
+    <About v-if="8 < time" :time="time" :offset="8"/>
+    <Works v-if="8 < time && false" :time="time" :offset="8"/>
   </div>
 </template>
 <script>
