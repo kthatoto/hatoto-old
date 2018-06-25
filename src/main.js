@@ -6,9 +6,14 @@ import store from './vuex/store'
 import router from './router'
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
+import VueAnalytics from 'vue-analytics'
 
 Vue.config.productionTip = false
 Vue.component('icon', Icon)
+Vue.use(VueAnalytics, {
+  id: process.env.GA_TRACK_ID,
+  router
+})
 
 /* eslint-disable no-new */
 new Vue({
