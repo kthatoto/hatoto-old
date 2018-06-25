@@ -10,10 +10,12 @@ import VueAnalytics from 'vue-analytics'
 
 Vue.config.productionTip = false
 Vue.component('icon', Icon)
-Vue.use(VueAnalytics, {
-  id: process.env.GA_TRACK_ID,
-  router
-})
+if (process.env.NODE_ENV === 'production') {
+  Vue.use(VueAnalytics, {
+    id: process.env.GA_TRACK_ID,
+    router
+  })
+}
 
 /* eslint-disable no-new */
 new Vue({
