@@ -1,13 +1,15 @@
 <template>
   <div>
     <!-- <div class="timer">{{ time.toFixed(1) }}</div> -->
+    <Console :stopTimer="stopTimer" :startTimer="startTimer"/>
     <Display :time="time"/>
   </div>
 </template>
 <script>
 import Display from '@/movie/Display'
+import Console from '@/movie/Console'
 export default {
-  components: { Display },
+  components: { Display, Console },
   data () {
     return {
       time: 0,
