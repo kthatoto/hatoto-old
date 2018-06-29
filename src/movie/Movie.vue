@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <div class="timer">{{ time.toFixed(1) }}</div> -->
-    <Console :stopTimer="stopTimer" :startTimer="startTimer"/>
+    <Console :stopTimer="stopTimer" :startTimer="startTimer" class="console"/>
     <Display :time="time"/>
   </div>
 </template>
@@ -80,7 +80,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.timer {
+.timer, .console {
   position: absolute;
   top: 0;
   right: 0;
