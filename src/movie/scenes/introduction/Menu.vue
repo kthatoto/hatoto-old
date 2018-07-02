@@ -31,7 +31,7 @@
 </template>
 <script>
 import anime from '@/movie/utils/Anime'
-import watchTime from '@/movie/utils/WatchTime'
+import watchTime from '@/movie/mixins/WatchTime'
 import { mapGetters } from 'vuex'
 import { menuAnimations as animes } from './animations'
 
@@ -61,7 +61,7 @@ export default {
     }).add(animes.slidedown())
       .add(animes.border())
     this.duration = this.animation.duration
-    this.$parent.duration += this.duration
+    this.$parent.durations.menu = this.duration
   }
 }
 </script>

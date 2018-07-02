@@ -2,7 +2,7 @@
   <div class="display">
     <div v-if="time">
       <Introduction :time="time"/>
-      <!-- <About :time="time"/> -->
+      <About :time="time - this.durations.about"/>
     </div>
   </div>
 </template>
@@ -18,7 +18,11 @@ export default {
   data () {
     return {
       width: null,
-      height: null
+      height: null,
+      durations: {
+        introduction: 0,
+        about: 0
+      }
     }
   },
   mounted () {

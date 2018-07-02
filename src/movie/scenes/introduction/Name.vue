@@ -19,7 +19,7 @@
 </template>
 <script>
 import anime from '@/movie/utils/Anime'
-import watchTime from '@/movie/utils/WatchTime'
+import watchTime from '@/movie/mixins/WatchTime'
 import { mapGetters } from 'vuex'
 import { nameAnimations as animes } from './animations'
 
@@ -57,7 +57,7 @@ export default {
       .add(animes.moveLogoPosition(this.width, this.height, 50, 50))
       .add(animes.changeWidth())
     this.duration = this.animation.duration
-    this.$parent.duration += this.duration
+    this.$parent.durations.name = this.duration
   }
 }
 </script>
