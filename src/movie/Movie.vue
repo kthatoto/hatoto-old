@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <div class="timer">{{ time.toFixed(1) }}</div> -->
     <Console :stopTimer="stopTimer" :startTimer="startTimer" class="console"/>
     <Display :time="time"/>
   </div>
@@ -19,7 +18,11 @@ export default {
   },
   created () {
     document.addEventListener('keyup', this.keyup)
-    this.startTimer()
+  },
+  mounted () {
+    setTimeout(() => {
+      this.startTimer()
+    }, 100)
   },
   beforeDestroy () {
     this.stopTimer()
