@@ -1,16 +1,30 @@
 <template>
   <div class="about">
-    <Profile :time="time" :offset="offset" class="about__profile"/>
-    <Timeline :time="time" :offset="offset"/>
+    <Profile :time="time" class="about__profile"/>
+    <Timeline :time="time"/>
   </div>
 </template>
 <script>
 import Profile from '@/movie/scenes/about/Profile'
 import Timeline from '@/movie/scenes/about/Timeline'
+import watchDurations from '@/movie/mixins/WatchDurations'
 
 export default {
   components: { Profile, Timeline },
-  props: ['time', 'offset']
+  props: ['time'],
+  mixins: [watchDurations],
+  data () {
+    return {
+      duration: 0,
+      durations: {
+        profile: 0,
+        timeline: 0
+      }
+    }
+  },
+  watch (newDuration) {
+    this.$parent.durations.about = newDuration
+  }
 }
 </script>
 <style lang="scss" scoped>

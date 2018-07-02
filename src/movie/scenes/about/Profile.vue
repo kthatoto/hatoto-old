@@ -1,20 +1,22 @@
 <template>
   <div class="profile">
-    <h2 class="profile__header">
-      <span>Profile</span>
-      <span class="profile__headerUnderline"></span>
-    </h2>
-    <div class="profile__content">
-      <table class="profile__table">
-        <tr v-for="row in profile" :key="row.header" class="profile__tableRow">
-          <th class="profile__tableHeader">{{ row.header }}:</th>
-          <td>{{ row.data }}</td>
-        </tr>
-      </table>
-      <img :src="require(`@/assets/${image}`)" class="profile__image">
-    </div>
-    <div class="profile__updated">
-      <p>Updated on {{ lastUpdated }}</p>
+    <div>
+      <h2 class="profile__header">
+        <span>Profile</span>
+        <span class="profile__headerUnderline"></span>
+      </h2>
+      <div class="profile__content">
+        <table class="profile__table">
+          <tr v-for="row in profile" :key="row.header" class="profile__tableRow">
+            <th class="profile__tableHeader">{{ row.header }}:</th>
+            <td>{{ row.data }}</td>
+          </tr>
+        </table>
+        <img :src="require(`@/assets/${image}`)" class="profile__image">
+      </div>
+      <div class="profile__updated">
+        <p>Updated on {{ lastUpdated }}</p>
+      </div>
     </div>
   </div>
 </template>

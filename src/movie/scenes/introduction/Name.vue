@@ -40,8 +40,7 @@ export default {
         { body: 's' }, { body: 'h' }, { body: 'i' }, { body: ' ' },
         { body: 'K' }, { body: 'a' }, { body: 'z' }, { body: 'u' },
         { body: 't', remain: true }, { body: 'o', remain: true }
-      ],
-      status: 'beforeStart'
+      ]
     }
   },
   mounted () {

@@ -51,8 +51,7 @@ export default {
         { label: 'Works' },
         { label: 'Skills' },
         { label: 'Contact' }
-      ],
-      status: 'beforeStart'
+      ]
     }
   },
   mounted () {

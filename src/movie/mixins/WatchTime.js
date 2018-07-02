@@ -1,4 +1,9 @@
 export default {
+  data () {
+    return {
+      status: 'beforeStart'
+    }
+  },
   watch: {
     time (newTime, _) {
       if (this.time < 0) {
