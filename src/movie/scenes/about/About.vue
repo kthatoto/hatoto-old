@@ -22,8 +22,10 @@ export default {
       }
     }
   },
-  watch (newDuration) {
-    this.$parent.durations.about = newDuration
+  watch: {
+    duration (newDuration) {
+      this.$parent.durations.about = newDuration
+    }
   }
 }
 </script>
