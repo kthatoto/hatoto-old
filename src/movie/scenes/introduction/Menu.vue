@@ -31,11 +31,13 @@
 </template>
 <script>
 import anime from '@/movie/utils/Anime'
+import watchTime from '@/movie/utils/WatchTime'
 import { mapGetters } from 'vuex'
 import { menuAnimations as animes } from './animations'
 
 export default {
-  props: ['time', 'offset'],
+  props: ['time'],
+  mixins: [watchTime],
   computed: mapGetters({
     width: 'getDisplayWidth',
     height: 'getDisplayHeight'
@@ -59,18 +61,7 @@ export default {
     }).add(animes.slidedown())
       .add(animes.border())
     this.duration = this.animation.duration
-  },
-  watch: {
-    time (newTime, _) {
-      if (this.time < this.offset) {
-        this.status = 'beforeStart'
-      } else if (this.time > this.offset + (this.duration / 1000)) {
-        this.status = 'finished'
-      } else {
-        this.status = 'animating'
-        this.animation.seek(newTime * 1000 - this.offset * 1000)
-      }
-    }
+    this.$parent.duration += this.duration
   }
 }
 </script>

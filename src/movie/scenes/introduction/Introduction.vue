@@ -1,7 +1,7 @@
 <template>
   <div class="introduction">
-    <Name :time="time" :offset="offset" />
-    <Menu :time="time" :offset="offset + 6"/>
+    <Name :time="time"/>
+    <Menu :time="time"/>
   </div>
 </template>
 <script>
@@ -10,6 +10,11 @@ import Menu from '@/movie/scenes/introduction/Menu'
 
 export default {
   components: { Name, Menu },
-  props: ['time', 'offset']
+  props: ['time'],
+  data () {
+    return {
+      duration: 0
+    }
+  }
 }
 </script>

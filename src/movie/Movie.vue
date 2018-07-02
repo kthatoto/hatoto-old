@@ -20,9 +20,7 @@ export default {
     document.addEventListener('keyup', this.keyup)
   },
   mounted () {
-    setTimeout(() => {
-      this.startTimer()
-    }, 100)
+    this.startTimer()
   },
   beforeDestroy () {
     this.stopTimer()
@@ -34,7 +32,7 @@ export default {
     startTimer () {
       this.stopTimer()
       this.timerId = setInterval(() => {
-        this.time += 0.01
+        this.time += 10
       }, 10)
     },
     resetTimer () {
@@ -63,16 +61,16 @@ export default {
           break
         case 'ArrowLeft':
           if (this.smallMode) {
-            this.backTime(0.1)
+            this.backTime(100)
           } else {
-            this.backTime(5)
+            this.backTime(5000)
           }
           break
         case 'ArrowRight':
           if (this.smallMode) {
-            this.progressTime(0.1)
+            this.progressTime(100)
           } else {
-            this.progressTime(5)
+            this.progressTime(5000)
           }
           break
         default:
