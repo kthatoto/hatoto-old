@@ -64,12 +64,24 @@ export default {
     }).add(animes.wave({targets: '.timeline__headerChar'}))
       .add(animes.underline({targets: this.styles}))
       .add({
+        targets: '.timeline__yearLabel',
+        width: width,
+        duration: 2000
+      })
+      .add({
+        targets: '.timeline__baseLine',
+        width: width,
+        duration: 2000,
+        offset: '-=2000'
+      })
+      .add({
         targets: '.timeline__lineMask',
         width: width,
         duration: 2000,
         delay: (_, i) => {
           return i * 50
-        }
+        },
+        offset: '-=1000'
       })
     this.duration = this.animation.duration
     this.$parent.durations.timeline = this.duration
@@ -127,6 +139,13 @@ export default {
         overflow: hidden;
         position: relative;
       }
+    }
+    &__yearLabel {
+      width: 0;
+      overflow: hidden;
+    }
+    &__baseLine {
+      width: 0;
     }
   }
 }
