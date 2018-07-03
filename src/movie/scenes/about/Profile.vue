@@ -37,6 +37,7 @@
 <script>
 import anime from '@/movie/utils/Anime'
 import watchTime from '@/movie/mixins/WatchTime'
+import { animations as animes } from './animations'
 export default {
   props: ['time'],
   mixins: [watchTime],
@@ -61,45 +62,32 @@ export default {
   mounted () {
     this.animation = anime.timeline({
       autoplay: false
-    }).add({
-      targets: '.profile__headerChar',
-      easing: 'gravity',
-      translateY: -20,
-      delay: (_, i) => {
-        return i * 20
-      },
-      duration: 500
-    }).add({
-      targets: this.styles,
-      underlineWidth: '100%',
-      round: 1,
-      easing: 'linear',
-      duration: 1000,
-      offset: '-=300'
-    }).add({
-      targets: '.profile__tableChar',
-      opacity: 1,
-      delay: (_, i) => {
-        return i * 10
-      },
-      duration: 300,
-      offset: '-=800'
-    }).add({
-      targets: '.profile__tableChar',
-      easing: 'gravity',
-      translateX: 20,
-      delay: (_, i) => {
-        return i * 10
-      },
-      duration: 300,
-      offset: '-=1500'
-    }).add({
-      targets: '.profile__image',
-      rotate: 360,
-      opacity: 1,
-      duration: 1500,
-      offset: '-=1000'
-    })
+    }).add(animes.wave({targets: '.profile__headerChar'}))
+      .add(animes.underline({targets: this.styles}))
+      .add({
+        targets: '.profile__tableChar',
+        opacity: 1,
+        delay: (_, i) => {
+          return i * 10
+        },
+        duration: 300,
+        offset: '-=800'
+      }).add({
+        targets: '.profile__tableChar',
+        easing: 'gravity',
+        translateX: 20,
+        delay: (_, i) => {
+          return i * 10
+        },
+        duration: 300,
+        offset: '-=1500'
+      }).add({
+        targets: '.profile__image',
+        rotate: 360,
+        opacity: 1,
+        duration: 1500,
+        offset: '-=1000'
+      })
     this.duration = this.animation.duration
     this.$parent.durations.profile = this.duration
   }
@@ -113,12 +101,11 @@ $imageWidth: 200px;
   }
   &__header {
     position: relative;
-    display: flex;
-    justify-content: left;
     &Underline {
       display: block;
       width: 100%;
       border-bottom: 1px solid black;
+      margin-bottom: 20px;
     }
     &Char {
       display: inline-block;

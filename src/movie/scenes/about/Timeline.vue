@@ -1,10 +1,13 @@
 <template>
   <div class="timeline">
-    <div v-show="status !== 'beforeStart'">
+    <div v-show="status !== 'beforeStart'" class="animating">
       <h2 class="timeline__header">
-        <span>Timeline</span>
-        <span class="timeline__headerUnderline"></span>
+        <span v-for="(char, i) in 'Timeline'.split('')"
+          :key="i"
+          class="timeline__headerChar">{{ char }}</span>
       </h2>
+      <span class="timeline__headerUnderline"
+        :style="{width: styles.underlineWidth}"></span>
       <div class="timeline__content">
         <div class="timeline__yearLabel">
           <span v-for="label in yearLabels"
@@ -27,6 +30,7 @@
 import anime from '@/movie/utils/Anime'
 import watchTime from '@/movie/mixins/WatchTime'
 import linesData from './linesData'
+import { animations as animes } from './animations'
 export default {
   props: ['time'],
   mixins: [watchTime],
@@ -41,7 +45,10 @@ export default {
         { year: 2017, position: '30%' },
         { year: 2018, position: '80%' }
       ],
-      lines: []
+      lines: [],
+      styles: {
+        underlineWidth: '0%'
+      }
     }
   },
   created () {
@@ -50,9 +57,8 @@ export default {
   mounted () {
     this.animation = anime.timeline({
       autoplay: false
-    }).add({
-      duration: 10000
-    })
+    }).add(animes.wave({targets: '.timeline__headerChar'}))
+      .add(animes.underline({targets: this.styles}))
     this.duration = this.animation.duration
     this.$parent.durations.timeline = this.duration
   }
@@ -64,11 +70,15 @@ export default {
     position: relative;
   }
   &__header {
-    margin-bottom: 20px;
+    position: relative;
     &Underline {
       display: block;
       width: 100%;
       border-bottom: 1px solid black;
+      margin-bottom: 20px;
+    }
+    &Char {
+      display: inline-block;
     }
   }
   &__yearLabel {
