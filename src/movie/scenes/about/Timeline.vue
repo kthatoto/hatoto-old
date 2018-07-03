@@ -58,12 +58,18 @@ export default {
     this.lines = linesData
   },
   mounted () {
+    const width = document.getElementsByClassName('timeline')[0].clientWidth
     this.animation = anime.timeline({
       autoplay: false
     }).add(animes.wave({targets: '.timeline__headerChar'}))
       .add(animes.underline({targets: this.styles}))
       .add({
-        targets: './timeline__lineMask',
+        targets: '.timeline__lineMask',
+        width: width,
+        duration: 2000,
+        delay: (_, i) => {
+          return i * 50
+        }
       })
     this.duration = this.animation.duration
     this.$parent.durations.timeline = this.duration
@@ -117,7 +123,7 @@ export default {
     &__line {
       &Mask {
         height: 25px;
-        width: 0%;
+        width: 0;
         overflow: hidden;
         position: relative;
       }
