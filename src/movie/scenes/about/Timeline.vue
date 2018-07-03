@@ -1,31 +1,39 @@
 <template>
   <div class="timeline">
-    <h2 class="timeline__header">
-      <span>Timeline</span>
-      <span class="timeline__headerUnderline"></span>
-    </h2>
-    <div class="timeline__content">
-      <div class="timeline__yearLabel">
-        <span v-for="label in yearLabels"
-          class="timeline__yearLabelItem"
-          :key="label.year"
-          :style="{ left: `calc( ${label.position} - 20px )` }">{{ label.year }}</span>
-      </div>
-      <div class="timeline__baseLine"></div>
-      <div class="timeline__lines">
-        <div v-for="line in lines"
-          class="timeline__line"
-          :style="line.style"
-          :key="line.date">{{ line.date }} {{ line.title }}</div>
+    <div v-show="status !== 'beforeStart'">
+      <h2 class="timeline__header">
+        <span>Timeline</span>
+        <span class="timeline__headerUnderline"></span>
+      </h2>
+      <div class="timeline__content">
+        <div class="timeline__yearLabel">
+          <span v-for="label in yearLabels"
+            class="timeline__yearLabelItem"
+            :key="label.year"
+            :style="{ left: `calc( ${label.position} - 20px )` }">{{ label.year }}</span>
+        </div>
+        <div class="timeline__baseLine"></div>
+        <div class="timeline__lines">
+          <div v-for="line in lines"
+            class="timeline__line"
+            :style="line.style"
+            :key="line.date">{{ line.date }} {{ line.title }}</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import anime from '@/movie/utils/Anime'
+import watchTime from '@/movie/mixins/WatchTime'
 import linesData from './linesData'
 export default {
+  props: ['time'],
+  mixins: [watchTime],
   data () {
     return {
+      animation: {},
+      duration: 0,
       yearLabels: [
         { year: 1996, position: '0% + 20px' },
         { year: 2015, position: '10%' },
@@ -38,6 +46,15 @@ export default {
   },
   created () {
     this.lines = linesData
+  },
+  mounted () {
+    this.animation = anime.timeline({
+      autoplay: false
+    }).add({
+      duration: 10000
+    })
+    this.duration = this.animation.duration
+    this.$parent.durations.timeline = this.duration
   }
 }
 </script>

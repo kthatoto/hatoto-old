@@ -2,7 +2,7 @@
   <div class="display">
     <div v-if="time">
       <Introduction :time="time"/>
-      <About :time="time - this.durations.about"/>
+      <About :time="time - this.durations.introduction"/>
     </div>
   </div>
 </template>

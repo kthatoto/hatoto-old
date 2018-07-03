@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <Profile :time="time" class="about__profile"/>
-    <Timeline :time="time"/>
+    <Timeline :time="time - this.durations.profile"/>
   </div>
 </template>
 <script>
@@ -36,8 +36,5 @@ export default {
   left: 300px;
   width: calc(100% - 300px - 50px);
   height: calc(100% - 150px - 50px);
-  &__profile {
-    margin-bottom: 40px;
-  }
 }
 </style>
