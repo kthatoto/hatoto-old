@@ -84,7 +84,7 @@ export default {
         offset: '-=1000'
       })
       .add({
-        targets: '.about',
+        targets: '.about .animating',
         height: 0,
         duration: 2000
       })
