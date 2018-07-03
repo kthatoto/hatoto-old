@@ -2,7 +2,8 @@
   <div class="display">
     <div v-if="time">
       <Introduction :time="time"/>
-      <About :time="time - this.durations.introduction"/>
+      <About :time="time - durations.introduction"/>
+      <Skills :time="time - (durations.introduction + durations.about)"/>
     </div>
   </div>
 </template>
@@ -11,9 +12,10 @@ import store from '@/vuex/store'
 import { SET_DISPLAY_SIZE } from '@/vuex/mutation_types'
 import Introduction from '@/movie/scenes/introduction/Introduction'
 import About from '@/movie/scenes/about/About'
+import Skills from '@/movie/scenes/skills/Skills'
 
 export default {
-  components: { Introduction, About },
+  components: { Introduction, About, Skills },
   props: ['time'],
   data () {
     return {

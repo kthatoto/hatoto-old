@@ -83,6 +83,11 @@ export default {
         },
         offset: '-=1000'
       })
+      .add({
+        targets: '.about',
+        height: 0,
+        duration: 2000
+      })
     this.duration = this.animation.duration
     this.$parent.durations.timeline = this.duration
   }

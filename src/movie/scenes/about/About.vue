@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <Profile :time="time" class="about__profile"/>
-    <Timeline :time="time - this.durations.profile"/>
+    <Timeline :time="time - durations.profile"/>
   </div>
 </template>
 <script>

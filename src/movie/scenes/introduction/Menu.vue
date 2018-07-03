@@ -48,7 +48,6 @@ export default {
       duration: 0,
       items: [
         { label: 'About' },
-        { label: 'Works' },
         { label: 'Skills' },
         { label: 'Contact' }
       ]

@@ -4,8 +4,11 @@
   </div>
 </template>
 <script>
+import List from '@/movie/scenes/skills/List'
+import watchDurations from '@/movie/mixins/WatchDurations'
+
 export default {
-  compoents: {},
+  components: { List },
   props: ['time'],
   mixins: [watchDurations],
   data () {
