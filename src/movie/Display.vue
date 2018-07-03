@@ -21,7 +21,8 @@ export default {
       height: null,
       durations: {
         introduction: 0,
-        about: 0
+        about: 0,
+        skills: 0
       }
     }
   },
