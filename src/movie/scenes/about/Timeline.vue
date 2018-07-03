@@ -18,9 +18,12 @@
         <div class="timeline__baseLine"></div>
         <div class="timeline__lines">
           <div v-for="line in lines"
-            class="timeline__line"
-            :style="line.style"
-            :key="line.date">{{ line.date }} {{ line.title }}</div>
+            :key="line.date"
+            class="timeline__lineMask"
+            :style="line.maskStyle">
+            <div class="timeline__line"
+              :style="line.style">{{ line.date }} {{ line.title }}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -59,6 +62,9 @@ export default {
       autoplay: false
     }).add(animes.wave({targets: '.timeline__headerChar'}))
       .add(animes.underline({targets: this.styles}))
+      .add({
+        targets: './timeline__lineMask',
+      })
     this.duration = this.animation.duration
     this.$parent.durations.timeline = this.duration
   }
@@ -109,9 +115,12 @@ export default {
 .animating {
   .timeline {
     &__line {
-      overflow: hidden;
-      padding-left: 0;
-      padding-right: 0;
+      &Mask {
+        height: 25px;
+        width: 0%;
+        overflow: hidden;
+        position: relative;
+      }
     }
   }
 }

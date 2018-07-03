@@ -7,8 +7,10 @@ export default [
       right: '0',
       backgroundColor: '#33358a',
       color: 'white',
-      top: '5px',
       borderRadius: '5px 0 0 5px'
+    },
+    maskStyle: {
+      top: '5px'
     }
   },
   {
@@ -19,8 +21,10 @@ export default [
       right: '0',
       backgroundColor: '#e15627',
       color: 'white',
-      top: '35px',
       borderRadius: '5px 0 0 5px'
+    },
+    maskStyle: {
+      top: '10px'
     }
   },
   {
@@ -31,9 +35,11 @@ export default [
       right: '12%',
       backgroundColor: '#9dcce0',
       color: '#333',
-      top: '65px',
       fontWeight: 'bold',
       borderRadius: '5px'
+    },
+    maskStyle: {
+      top: '15px'
     }
   },
   {
@@ -44,8 +50,10 @@ export default [
       right: '0',
       backgroundColor: '#61967d',
       color: 'white',
-      top: '95px',
       borderRadius: '5px 0 0 5px'
+    },
+    maskStyle: {
+      top: '20px'
     }
   },
   {
@@ -56,8 +64,10 @@ export default [
       right: '0',
       backgroundColor: '#3284c8',
       color: 'white',
-      top: '125px',
       borderRadius: '5px 0 0 5px'
+    },
+    maskStyle: {
+      top: '25px'
     }
   }
 ]
