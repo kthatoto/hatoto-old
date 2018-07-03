@@ -106,4 +106,13 @@ export default {
     font-size: 0.8rem;
   }
 }
+.animating {
+  .timeline {
+    &__line {
+      overflow: hidden;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
 </style>
