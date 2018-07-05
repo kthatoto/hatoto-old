@@ -1,7 +1,7 @@
 <template>
   <div>
     <div @click="stopTimer">stop</div>
-    <div @click="startTimer">start</div>
+    <div @click="startTimer">start </div>
   </div>
 </template>
 <script>
